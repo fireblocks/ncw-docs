@@ -1,0 +1,2785 @@
+{
+    "item": [
+        {
+            "name": "Non Custodial Wallets",
+            "description": "",
+            "item": [
+                {
+                    "id": "2a9eb808-8143-496c-a9f4-6ad849e66cb3",
+                    "name": "Create a new wallet",
+                    "request": {
+                        "name": "Create a new wallet",
+                        "description": {
+                            "content": "Create new Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "a4fa5fee-6074-4a6b-bea7-edb6b77be5cc",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"walletId\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "3cc8a72b-0cf8-49b2-8d4b-a378c61c40c4",
+                    "name": "List wallets",
+                    "request": {
+                        "name": "List wallets",
+                        "description": {
+                            "content": "Get all Non Custodial Wallets",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Cursor to the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageCursor",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Amount of results to return in the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageSize",
+                                    "value": "10"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "sort",
+                                    "value": "createdAt"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Is the order ascending or descending",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "order",
+                                    "value": "ASC"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "enabled",
+                                    "value": "<boolean>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "ae2538b9-002a-440c-bda9-3b46f25b4efa",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Cursor to the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Amount of results to return in the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "10"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "sort",
+                                            "value": "createdAt"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Is the order ascending or descending",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "order",
+                                            "value": "ASC"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enabled",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"data\": [\n    {\n      \"walletId\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    },\n    {\n      \"walletId\": \"<string>\",\n      \"enabled\": \"<boolean>\"\n    }\n  ],\n  \"paging\": {\n    \"next\": \"<string>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        },
+                        {
+                            "id": "73eebcfe-4d9c-45de-92ac-55dc797da4e8",
+                            "name": "Query parameters were invalid",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Cursor to the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Amount of results to return in the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "10"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "sort",
+                                            "value": "createdAt"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Is the order ascending or descending",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "order",
+                                            "value": "ASC"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enabled",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "8e152da6-a4b9-4f75-8457-2985802bd073",
+                    "name": "Get a wallet",
+                    "request": {
+                        "name": "Get a wallet",
+                        "description": {
+                            "content": "Get a specific Non Custodial Wallet by wallet ID",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "7d37ae6c-7df1-4a59-8ca8-440ba579b7a4",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"walletId\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "3464ddb6-d0a5-4146-9675-06dc716f7b34",
+                    "name": "Get wallet Latest Backup details",
+                    "request": {
+                        "name": "Get wallet Latest Backup details",
+                        "description": {
+                            "content": "Get wallet Latest Backup details, including the deviceId, and backup time.",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "backup",
+                                "latest"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "a51d9911-9ad9-499c-a92c-078199e7543a",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "backup",
+                                        "latest"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"passphraseId\": \"<string>\",\n  \"createdAt\": \"<number>\",\n  \"keys\": [\n    {\n      \"deviceId\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"keyId\": \"<string>\",\n      \"algorithm\": \"MPC_CMP_ECDSA_SECP256K1\"\n    },\n    {\n      \"deviceId\": \"<string>\",\n      \"publicKey\": \"<string>\",\n      \"keyId\": \"<string>\",\n      \"algorithm\": \"MPC_CMP_ECDSA_SECP256K1\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "2cdde6bf-3ecd-4f10-aa0c-26de72b88337",
+                    "name": "Get wallet key setup state",
+                    "request": {
+                        "name": "Get wallet key setup state",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "v1",
+                                "wallets",
+                                ":walletId",
+                                "setup_status"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "4a372d1b-0e34-4404-8995-d1a7e626ef2c",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "wallets",
+                                        ":walletId",
+                                        "setup_status"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"status\": \"<string>\",\n  \"deviceSetupStatus\": [\n    {\n      \"status\": \"<string>\",\n      \"setupStatus\": [\n        {\n          \"status\": \"<string>\",\n          \"algorithmName\": \"<string>\",\n          \"confirmed\": \"<boolean>\",\n          \"backedUp\": \"<boolean>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"algorithmName\": \"<string>\",\n          \"confirmed\": \"<boolean>\",\n          \"backedUp\": \"<boolean>\"\n        }\n      ],\n      \"deviceId\": \"<string>\"\n    },\n    {\n      \"status\": \"<string>\",\n      \"setupStatus\": [\n        {\n          \"status\": \"<string>\",\n          \"algorithmName\": \"<string>\",\n          \"confirmed\": \"<boolean>\",\n          \"backedUp\": \"<boolean>\"\n        },\n        {\n          \"status\": \"<string>\",\n          \"algorithmName\": \"<string>\",\n          \"confirmed\": \"<boolean>\",\n          \"backedUp\": \"<boolean>\"\n        }\n      ],\n      \"deviceId\": \"<string>\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "880f684d-d187-4536-be57-4b87a86091e2",
+                    "name": "Enable or disable a wallet",
+                    "request": {
+                        "name": "Enable or disable a wallet",
+                        "description": {
+                            "content": "Enable or disable a Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "enable"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "d22ed4a3-ea66-44a9-a2a9-a7ef0383953f",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "enable"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Non Custodial Wallet Accounts",
+            "description": "",
+            "item": [
+                {
+                    "id": "ea5c00b4-756c-4ead-a052-eab2c78d85e3",
+                    "name": "Create a new account",
+                    "request": {
+                        "name": "Create a new account",
+                        "description": {
+                            "content": "Create a new account under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "a4cb7f9f-92b7-43b8-8f23-7acc387a84d2",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"accountId\": \"<number>\",\n  \"walletId\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "b4177433-693b-4154-9ef6-3b345d14467b",
+                    "name": "Get accounts",
+                    "request": {
+                        "name": "Get accounts",
+                        "description": {
+                            "content": "Get all accounts under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Cursor to the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageCursor",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Amount of results to return in the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageSize",
+                                    "value": "10"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "enum",
+                                    "value": "id"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Is the order ascending or descending",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "order",
+                                    "value": "ASC"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "enabled",
+                                    "value": "<boolean>"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "866900ef-a735-437f-97c9-8abed2838dc3",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Cursor to the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Amount of results to return in the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "10"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enum",
+                                            "value": "id"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Is the order ascending or descending",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "order",
+                                            "value": "ASC"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enabled",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"data\": [\n    {\n      \"accountId\": \"<number>\",\n      \"walletId\": \"<string>\"\n    },\n    {\n      \"accountId\": \"<number>\",\n      \"walletId\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"next\": \"<string>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "08d4ba1b-e0be-44f0-b046-0baf1bc34506",
+                    "name": "Get an account",
+                    "request": {
+                        "name": "Get an account",
+                        "description": {
+                            "content": "Get a specific account under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "ae2f0a36-6918-4159-9272-c7240d158a0c",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"accountId\": \"<number>\",\n  \"walletId\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Non Custodial Wallet Assets",
+            "description": "",
+            "item": [
+                {
+                    "id": "a3241b30-d78a-4544-92bd-5a878ccf7e37",
+                    "name": "Retrieve assets",
+                    "request": {
+                        "name": "Retrieve assets",
+                        "description": {
+                            "content": "Get all assets under a specific account, under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Cursor to the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageCursor",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Amount of results to return in the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageSize",
+                                    "value": "10"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "sort",
+                                    "value": "assetId"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Is the order ascending or descending",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "order",
+                                    "value": "ASC"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "enabled",
+                                    "value": "<boolean>"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "ccdcd020-c4da-48d5-847a-cd6b31260367",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Cursor to the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Amount of results to return in the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "10"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "sort",
+                                            "value": "assetId"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Is the order ascending or descending",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "order",
+                                            "value": "ASC"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enabled",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"name\": \"<string>\",\n      \"decimals\": \"<number>\",\n      \"networkProtocol\": \"<string>\",\n      \"testnet\": \"<boolean>\",\n      \"hasFee\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"baseAsset\": \"<string>\",\n      \"coinType\": \"<number>\",\n      \"tenantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"blockchain\": \"<string>\",\n      \"ethNetwork\": \"<number>\",\n      \"ethContractAddress\": \"<string>\",\n      \"issuerAddress\": \"<string>\",\n      \"blockchainSymbol\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"configuration\": {},\n      \"assetInfo\": {},\n      \"blockchainDisplayName\": \"<string>\",\n      \"blockchainId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"name\": \"<string>\",\n      \"decimals\": \"<number>\",\n      \"networkProtocol\": \"<string>\",\n      \"testnet\": \"<boolean>\",\n      \"hasFee\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"baseAsset\": \"<string>\",\n      \"coinType\": \"<number>\",\n      \"tenantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"blockchain\": \"<string>\",\n      \"ethNetwork\": \"<number>\",\n      \"ethContractAddress\": \"<string>\",\n      \"issuerAddress\": \"<string>\",\n      \"blockchainSymbol\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"configuration\": {},\n      \"assetInfo\": {},\n      \"blockchainDisplayName\": \"<string>\",\n      \"blockchainId\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"next\": \"<string>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "44c14870-b64a-4812-a327-9901d54b0e85",
+                    "name": "Retrieve asset",
+                    "request": {
+                        "name": "Retrieve asset",
+                        "description": {
+                            "content": "Get a specific asset, under a specific account, under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets",
+                                ":assetId"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "assetId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9631eb35-c624-4c09-959f-e3f224758e36",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets",
+                                        ":assetId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<string>\",\n  \"symbol\": \"<string>\",\n  \"name\": \"<string>\",\n  \"decimals\": \"<number>\",\n  \"networkProtocol\": \"<string>\",\n  \"testnet\": \"<boolean>\",\n  \"hasFee\": \"<boolean>\",\n  \"type\": \"<string>\",\n  \"baseAsset\": \"<string>\",\n  \"coinType\": \"<number>\",\n  \"tenantIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"blockchain\": \"<string>\",\n  \"ethNetwork\": \"<number>\",\n  \"ethContractAddress\": \"<string>\",\n  \"issuerAddress\": \"<string>\",\n  \"blockchainSymbol\": \"<string>\",\n  \"deprecated\": \"<boolean>\",\n  \"configuration\": {},\n  \"assetInfo\": {},\n  \"blockchainDisplayName\": \"<string>\",\n  \"blockchainId\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "fe7bd156-0217-42d1-9e46-e081fe29509c",
+                    "name": "Add asset to account",
+                    "request": {
+                        "name": "Add asset to account",
+                        "description": {
+                            "content": "Add a new asset to an existing account, under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets",
+                                ":assetId"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "assetId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "efc0346e-b71f-47f4-962e-2ecec570ac0f",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets",
+                                        ":assetId"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {}
+                            },
+                            "status": "Created",
+                            "code": 201,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"accountName\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"asset\": \"<string>\",\n  \"address\": \"<string>\",\n  \"addressType\": \"<string>\",\n  \"addressDescription\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"addressIndex\": \"<number>\",\n  \"change\": \"<number>\",\n  \"coinType\": \"<number>\",\n  \"customerRefId\": \"<string>\",\n  \"addressFormat\": \"<string>\",\n  \"legacyAddress\": \"<string>\",\n  \"paymentAddress\": \"<string>\",\n  \"userDefined\": \"<boolean>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "4bcea24f-4d06-4e65-8f7e-090e8fc1823d",
+                    "name": "Refresh asset balance",
+                    "request": {
+                        "name": "Refresh asset balance",
+                        "description": {
+                            "content": "Refresh the balance of an asset in a specific account",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets",
+                                ":assetId",
+                                "balance"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "assetId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "12dc3f5a-4995-45c3-b8ec-bd5cdab8b232",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets",
+                                        ":assetId",
+                                        "balance"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<string>\",\n  \"rewardInfo\": {\n    \"pendingRewards\": \"<string>\"\n  },\n  \"total\": \"<string>\",\n  \"balance\": \"<string>\",\n  \"available\": \"<string>\",\n  \"pending\": \"<string>\",\n  \"frozen\": \"<string>\",\n  \"lockedAmount\": \"<string>\",\n  \"totalStakedCPU\": \"<string>\",\n  \"totalStakedNetwork\": \"<string>\",\n  \"selfStakedCPU\": \"<string>\",\n  \"selfStakedNetwork\": \"<string>\",\n  \"pendingRefundCPU\": \"<string>\",\n  \"pendingRefundNetwork\": \"<string>\",\n  \"blockHeight\": \"<string>\",\n  \"allocatedBalances\": [\n    {\n      \"allocationId\": \"<string>\",\n      \"total\": \"<string>\",\n      \"available\": \"<string>\",\n      \"pending\": \"<string>\",\n      \"frozen\": \"<string>\",\n      \"locked\": \"<string>\"\n    },\n    {\n      \"allocationId\": \"<string>\",\n      \"total\": \"<string>\",\n      \"available\": \"<string>\",\n      \"pending\": \"<string>\",\n      \"frozen\": \"<string>\",\n      \"locked\": \"<string>\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "00f51e6e-e901-433c-9d79-27831730a5a7",
+                    "name": "Retrieve asset balance",
+                    "request": {
+                        "name": "Retrieve asset balance",
+                        "description": {
+                            "content": "Get balance for specific asset, under a specific account",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets",
+                                ":assetId",
+                                "balance"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "assetId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "852697c7-a8a1-49e7-9fa2-4085dfbd7d20",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets",
+                                        ":assetId",
+                                        "balance"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"id\": \"<string>\",\n  \"rewardInfo\": {\n    \"pendingRewards\": \"<string>\"\n  },\n  \"total\": \"<string>\",\n  \"balance\": \"<string>\",\n  \"available\": \"<string>\",\n  \"pending\": \"<string>\",\n  \"frozen\": \"<string>\",\n  \"lockedAmount\": \"<string>\",\n  \"totalStakedCPU\": \"<string>\",\n  \"totalStakedNetwork\": \"<string>\",\n  \"selfStakedCPU\": \"<string>\",\n  \"selfStakedNetwork\": \"<string>\",\n  \"pendingRefundCPU\": \"<string>\",\n  \"pendingRefundNetwork\": \"<string>\",\n  \"blockHeight\": \"<string>\",\n  \"allocatedBalances\": [\n    {\n      \"allocationId\": \"<string>\",\n      \"total\": \"<string>\",\n      \"available\": \"<string>\",\n      \"pending\": \"<string>\",\n      \"frozen\": \"<string>\",\n      \"locked\": \"<string>\"\n    },\n    {\n      \"allocationId\": \"<string>\",\n      \"total\": \"<string>\",\n      \"available\": \"<string>\",\n      \"pending\": \"<string>\",\n      \"frozen\": \"<string>\",\n      \"locked\": \"<string>\"\n    }\n  ]\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "a9e882d3-b3f1-48d0-98dc-a82424a737f9",
+                    "name": "Retrieve asset addresses",
+                    "request": {
+                        "name": "Retrieve asset addresses",
+                        "description": {
+                            "content": "Get the address of a specific asset, under a specific account, under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "accounts",
+                                ":accountId",
+                                "assets",
+                                ":assetId",
+                                "addresses"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageCursor",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageSize",
+                                    "value": "<number>"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "sort",
+                                    "value": "address"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "order",
+                                    "value": "ASC"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "enabled",
+                                    "value": "<boolean>"
+                                }
+                            ],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<number>",
+                                    "key": "accountId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "assetId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "ed424b05-8d78-4dee-8b3a-bb982481d706",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "accounts",
+                                        ":accountId",
+                                        "assets",
+                                        ":assetId",
+                                        "addresses"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": false,
+                                            "description": {
+                                                "content": "(Required) ",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "<number>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "sort",
+                                            "value": "address"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "order",
+                                            "value": "ASC"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "enabled",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"data\": [\n    {\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"asset\": \"<string>\",\n      \"address\": \"<string>\",\n      \"addressType\": \"<string>\",\n      \"addressDescription\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"addressIndex\": \"<number>\",\n      \"change\": \"<number>\",\n      \"coinType\": \"<number>\",\n      \"customerRefId\": \"<string>\",\n      \"addressFormat\": \"<string>\",\n      \"legacyAddress\": \"<string>\",\n      \"paymentAddress\": \"<string>\",\n      \"userDefined\": \"<boolean>\"\n    },\n    {\n      \"accountName\": \"<string>\",\n      \"accountId\": \"<string>\",\n      \"asset\": \"<string>\",\n      \"address\": \"<string>\",\n      \"addressType\": \"<string>\",\n      \"addressDescription\": \"<string>\",\n      \"tag\": \"<string>\",\n      \"addressIndex\": \"<number>\",\n      \"change\": \"<number>\",\n      \"coinType\": \"<number>\",\n      \"customerRefId\": \"<string>\",\n      \"addressFormat\": \"<string>\",\n      \"legacyAddress\": \"<string>\",\n      \"paymentAddress\": \"<string>\",\n      \"userDefined\": \"<boolean>\"\n    }\n  ],\n  \"paging\": {\n    \"next\": \"<string>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "8c2299ea-025b-43a8-bf45-dc1b490b0ee7",
+                    "name": "Retrieve supported assets",
+                    "request": {
+                        "name": "Retrieve supported assets",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "v1",
+                                "wallets",
+                                "supported_assets"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Cursor to the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageCursor",
+                                    "value": "<string>"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Amount of results to return in the next page",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "pageSize",
+                                    "value": "10"
+                                },
+                                {
+                                    "disabled": true,
+                                    "description": {
+                                        "content": "Only base assets",
+                                        "type": "text/plain"
+                                    },
+                                    "key": "onlyBaseAssets",
+                                    "value": "<boolean>"
+                                }
+                            ],
+                            "variable": []
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "c11c62ae-87d0-4911-81d6-3451a1817a86",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "wallets",
+                                        "supported_assets"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Cursor to the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageCursor",
+                                            "value": "<string>"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Amount of results to return in the next page",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "pageSize",
+                                            "value": "10"
+                                        },
+                                        {
+                                            "disabled": true,
+                                            "description": {
+                                                "content": "Only base assets",
+                                                "type": "text/plain"
+                                            },
+                                            "key": "onlyBaseAssets",
+                                            "value": "<boolean>"
+                                        }
+                                    ],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"data\": [\n    {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"name\": \"<string>\",\n      \"decimals\": \"<number>\",\n      \"networkProtocol\": \"<string>\",\n      \"testnet\": \"<boolean>\",\n      \"hasFee\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"baseAsset\": \"<string>\",\n      \"coinType\": \"<number>\",\n      \"tenantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"blockchain\": \"<string>\",\n      \"ethNetwork\": \"<number>\",\n      \"ethContractAddress\": \"<string>\",\n      \"issuerAddress\": \"<string>\",\n      \"blockchainSymbol\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"configuration\": {},\n      \"assetInfo\": {},\n      \"blockchainDisplayName\": \"<string>\",\n      \"blockchainId\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"symbol\": \"<string>\",\n      \"name\": \"<string>\",\n      \"decimals\": \"<number>\",\n      \"networkProtocol\": \"<string>\",\n      \"testnet\": \"<boolean>\",\n      \"hasFee\": \"<boolean>\",\n      \"type\": \"<string>\",\n      \"baseAsset\": \"<string>\",\n      \"coinType\": \"<number>\",\n      \"tenantIds\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"blockchain\": \"<string>\",\n      \"ethNetwork\": \"<number>\",\n      \"ethContractAddress\": \"<string>\",\n      \"issuerAddress\": \"<string>\",\n      \"blockchainSymbol\": \"<string>\",\n      \"deprecated\": \"<boolean>\",\n      \"configuration\": {},\n      \"assetInfo\": {},\n      \"blockchainDisplayName\": \"<string>\",\n      \"blockchainId\": \"<string>\"\n    }\n  ],\n  \"paging\": {\n    \"next\": \"<string>\"\n  }\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Non Custodial Wallet Devices",
+            "description": "",
+            "item": [
+                {
+                    "id": "7395a9ec-226c-454f-914f-bedb2ceb85bc",
+                    "name": "Get registered devices",
+                    "request": {
+                        "name": "Get registered devices",
+                        "description": {
+                            "content": "Get registered devices for a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "devices"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "55087daa-e32a-4c74-a971-87939dcf15da",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "devices"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "[\n  {\n    \"deviceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"deviceId\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n]",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "e347ca26-044b-490f-9eef-b67235d18fad",
+                    "name": "Enable or Disable device",
+                    "request": {
+                        "name": "Enable or Disable device",
+                        "description": {
+                            "content": "Enable or Disable a device under a specific Non Custodial Wallet",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "devices",
+                                ":deviceId",
+                                "enable"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "deviceId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "PUT",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9ac8ba9f-5629-4024-9854-aa188c6eaf5e",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "devices",
+                                        ":deviceId",
+                                        "enable"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "PUT",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"enabled\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [],
+                            "cookie": [],
+                            "_postman_previewlanguage": "text"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                },
+                {
+                    "id": "df9924f7-b6be-4a3f-aa0c-a2c7947c679d",
+                    "name": "Get device key setup state",
+                    "request": {
+                        "name": "Get device key setup state",
+                        "description": {},
+                        "url": {
+                            "path": [
+                                "v1",
+                                "wallets",
+                                ":walletId",
+                                "devices",
+                                ":deviceId",
+                                "setup_status"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "deviceId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "GET",
+                        "body": {},
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "5274bef2-648d-49e2-885f-4b0c9e436c5e",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "wallets",
+                                        ":walletId",
+                                        "devices",
+                                        ":deviceId",
+                                        "setup_status"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "GET",
+                                "body": {}
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"status\": \"<string>\",\n  \"setupStatus\": [\n    {\n      \"status\": \"<string>\",\n      \"algorithmName\": \"<string>\",\n      \"confirmed\": \"<boolean>\",\n      \"backedUp\": \"<boolean>\"\n    },\n    {\n      \"status\": \"<string>\",\n      \"algorithmName\": \"<string>\",\n      \"confirmed\": \"<boolean>\",\n      \"backedUp\": \"<boolean>\"\n    }\n  ],\n  \"deviceId\": \"<string>\"\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Non Custodial Wallets RPC",
+            "description": "",
+            "item": [
+                {
+                    "id": "0bd639ef-bfb9-4d97-b127-a70bb8cd9ab5",
+                    "name": "Invoke RPC",
+                    "request": {
+                        "name": "Invoke RPC",
+                        "description": {
+                            "content": "Invoke Fireblocks RPC for MPC related operations",
+                            "type": "text/plain"
+                        },
+                        "url": {
+                            "path": [
+                                "v1",
+                                "ncw",
+                                "wallets",
+                                ":walletId",
+                                "devices",
+                                ":deviceId",
+                                "invoke"
+                            ],
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "query": [],
+                            "variable": [
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "walletId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "type": "any",
+                                    "value": "<string>",
+                                    "key": "deviceId",
+                                    "disabled": false,
+                                    "description": {
+                                        "content": "(Required) ",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ]
+                        },
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "method": "POST",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"payload\": \"<string>\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "auth": null
+                    },
+                    "response": [
+                        {
+                            "id": "9095d8e8-fa91-49cd-a1b9-b46094cbdfd1",
+                            "originalRequest": {
+                                "url": {
+                                    "path": [
+                                        "v1",
+                                        "ncw",
+                                        "wallets",
+                                        ":walletId",
+                                        "devices",
+                                        ":deviceId",
+                                        "invoke"
+                                    ],
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "query": [],
+                                    "variable": []
+                                },
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": {
+                                            "content": "Added as a part of security scheme: bearer",
+                                            "type": "text/plain"
+                                        },
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "method": "POST",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"payload\": \"<string>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "body": "{\n  \"result\": {}\n}",
+                            "cookie": [],
+                            "_postman_previewlanguage": "json"
+                        }
+                    ],
+                    "event": [],
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    }
+                }
+            ]
+        }
+    ],
+    "auth": {
+      "type": "apikey",
+      "apikey": [
+          {
+              "key": "value",
+              "value": "{{fireblocksApiKey}}",
+              "type": "string"
+          },
+          {
+              "key": "key",
+              "value": "X-API-Key",
+              "type": "string"
+          }
+      ]
+    },
+    "event": [
+      {
+          "listen": "prerequest",
+          "script": {
+              "id": "7519a272-d4d4-49f4-8838-26d1083f65bd",
+              "type": "text/javascript",
+              "exec": [
+                "function validateEnvironmentVariable(variableName) {",
+                "// Get selected environment name (undefined if none is selected)",
+                "const selectedEnvironment = pm.environment.name;",
+                "// Get token environment variable value (undefined if none exists or if current value is empty)",
+                "const variableValue = pm.environment.get(variableName);",
+                "if (selectedEnvironment === undefined) {",
+                    "throw new Error(`No environment containing a ${variableName} variable has been selected`);",
+                "}",
+                "if (variableValue === undefined) {",
+                    "throw new Error(`Selected environment (${selectedEnvironment}) does not contain a ${variableName} variable`);",
+                "}",
+                "if (variableValue.length === 0) {",
+                    "throw new Error(`Selected environment (${selectedEnvironment}) contains a ${variableName} variable but its current value is empty`);",
+                "}",
+                "if (variableName === 'fireblocksSecretKey' && !variableValue.startsWith('-----BEGIN PRIVATE KEY-----')) {",
+                    "throw new Error(`Selected environment (${selectedEnvironment}) contains a ${variableName} variable but its current value doesn't start with '-----BEGIN PRIVATE KEY-----' as expected`);",
+                "}",
+                "return variableValue;",
+              "}",
+              "function generateJwt() {",
+                "var header = {",
+                  "'alg': 'RS256',",
+                  "'typ': 'JWT'",
+                  "};",
+                  "const currentTimestamp = Math.floor(Date.now() / 1000);",
+                  "const fireblocksSecretKey = validateEnvironmentVariable('fireblocksSecretKey');",
+                  "const fireblocksApiKey = validateEnvironmentVariable('fireblocksApiKey');",
+                  "const uuid = require('uuid');",
+                  "const Url = require('postman-collection').Url;",
+                  "let url = pm.variables.replaceIn(pm.request.url.toString());",
+                  "url = new Url(url).getPathWithQuery();",
+                  "const body = (pm.request.body != null && pm.request.body.raw != null) ? pm.request.body.raw : '{}';",
+                  "var bodyHash = CryptoJS.SHA256(body);",
+                  "var payload = {",
+                  "'iat': currentTimestamp,",
+                  "'exp': currentTimestamp + 30,",
+                    "'uri':url,",
+                    "'sub': fireblocksApiKey,",
+                    "'bodyHash': bodyHash.toString(CryptoJS.enc.Hex),",
+                    "'nonce': uuid.v4()",
+                  "};",
+                "eval(pm.globals.get('jsrsasign-js')); // import javascript jsrsasign",
+                "var sHeader = JSON.stringify(header);",
+                "var sPayload = JSON.stringify(payload);",
+                "var signedToken = KJUR.jws.JWS.sign(header.alg, sHeader, sPayload, fireblocksSecretKey);",
+                "return signedToken;",
+              "}",
+              "var navigator = {}; // fake a navigator object for the lib",
+              "var window = {}; // fake a window object for the lib",
+              "let token = ''",
+              "if (pm.globals.has('jsrsasign-js')) {",
+                "token = generateJwt();",
+              "}",
+              "else {",
+                "pm.sendRequest(",
+              "'https://kjur.github.io/jsrsasign/jsrsasign-all-min.js',",
+              "function (err, res) {",
+                "if (err) {",
+                  "console.log(err);",
+                "} else {",
+                  "pm.globals.set('jsrsasign-js', res.text());",
+                  "token = generateJwt();",
+                "}});",
+              "}",
+              "pm.request.upsertHeader({",
+                "key: 'Authorization',",
+                "value: `Bearer ${token}`",
+              "});"              
+              ]
+          }
+      }
+    ],
+    "variable": [
+      {
+          "key": "baseUrl",
+          "value": "https://api.fireblocks.io",
+          "type": "string"
+      }
+    ],
+    "info": {
+        "_postman_id": "0bf179ad-f73a-4543-9f06-069ebe47a330",
+        "name": "Fireblocks NCW",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": {
+            "content": "Fireblocks Non Custodial Wallet Open API Specification",
+            "type": "text/plain"
+        }
+    }
+}

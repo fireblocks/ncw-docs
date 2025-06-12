@@ -39,10 +39,7 @@ jobs:
           # Create the main directory for the built site
           mkdir -p docs/android/ew
           mkdir -p docs/android/ncw
-          mkdir -p docs/ios/ew
-          mkdir -p docs/ios/ncw
-          mkdir -p docs/downloads/ios/ew
-          mkdir -p docs/downloads/ios/ncw
+          mkdir -p docs/ios
 
           # --- Generate Root Index Page ---
           # This page now lists available platforms instead of redirecting.
@@ -109,26 +106,11 @@ jobs:
           IOS_NCW_LINKS=""
           IOS_NCW_DOWNLOAD_LINKS=""
           for version in $IOS_NCW_VERSIONS; do
-            echo "Staging iOS NCW docs version $version"
-            mkdir -p "docs/ios/ncw/$version"
+            echo "Processing iOS NCW docs version $version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
             DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
             
-            # Copy the doccarchive for download
-            cp -r "$DOCCARCHIVE_DIR" "docs/downloads/ios/ncw/"
-            
-            # Copy the doccarchive and manually transform for subdirectory hosting
-            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ncw/$version/"
-            # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
-            find "docs/ios/ncw/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ncw/'$version'/"|g' {} \;
-            # Fix absolute asset paths to be relative
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
-            # IOS_NCW_LINKS - removed web hosting links
-            IOS_NCW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ncw/$DOCCARCHIVE_NAME'>NCW Documentation v$version (.doccarchive)</a></li>$IOS_NCW_DOWNLOAD_LINKS"
+            IOS_NCW_DOWNLOAD_LINKS="<li><a href='https://github.com/fireblocks/ncw-docs/tree/main/ios/ncw/$DOCCARCHIVE_NAME'>NCW Documentation v$version (.doccarchive)</a></li>$IOS_NCW_DOWNLOAD_LINKS"
           done
 
           # --- Process iOS EW Versions ---
@@ -140,35 +122,13 @@ jobs:
           IOS_EW_LINKS=""
           IOS_EW_DOWNLOAD_LINKS=""
           for version in $IOS_EW_VERSIONS; do
-            echo "Staging iOS EW docs version $version"
-            mkdir -p "docs/ios/ew/$version"
+            echo "Processing iOS EW docs version $version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
             DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
             
-            # Copy the doccarchive for download
-            cp -r "$DOCCARCHIVE_DIR" "docs/downloads/ios/ew/"
-            
-            # Copy the doccarchive and manually transform for subdirectory hosting
-            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ew/$version/"
-            # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
-            find "docs/ios/ew/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ew/'$version'/"|g' {} \;
-            # Fix absolute asset paths to be relative
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
-            # IOS_EW_LINKS - removed web hosting links
-            IOS_EW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ew/$DOCCARCHIVE_NAME'>EW Documentation v$version (.doccarchive)</a></li>$IOS_EW_DOWNLOAD_LINKS"
+            IOS_EW_DOWNLOAD_LINKS="<li><a href='https://github.com/fireblocks/ncw-docs/tree/main/ios/ew/$DOCCARCHIVE_NAME'>EW Documentation v$version (.doccarchive)</a></li>$IOS_EW_DOWNLOAD_LINKS"
           done
 
-          # --- Create iOS "latest" redirects ---
-          cat > docs/ios/ncw/index.html <<-EOF
-          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_NCW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_NCW_VERSION/">$LATEST_IOS_NCW_VERSION</a>.</p></body></html>
-          EOF
-          cat > docs/ios/ew/index.html <<-EOF
-          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_EW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_EW_VERSION/">$LATEST_IOS_EW_VERSION</a>.</p></body></html>
-          EOF
 
           # --- Generate iOS Index Page ---
           cat > docs/ios/index.html <<-EOF

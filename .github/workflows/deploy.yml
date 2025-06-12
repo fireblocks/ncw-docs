@@ -41,17 +41,20 @@ jobs:
           mkdir -p docs/android/ncw
 
           # --- Generate Root Index Page ---
+          # This page now lists available platforms instead of redirecting.
           cat > docs/index.html <<-EOF
           <!DOCTYPE html>
           <html>
           <head>
             <title>Fireblocks NCW Documentation</title>
-            <meta http-equiv="refresh" content="0; url=./android/" />
-            <style>body { font-family: sans-serif; padding: 2em; } a { font-size: 1.2em; }</style>
+            <style>body { font-family: sans-serif; padding: 2em; } h1 { border-bottom: 1px solid #ccc; padding-bottom: 5px; } ul { list-style-type: none; padding-left: 0; } li { margin-bottom: 0.5em; } a { font-size: 1.2em; text-decoration: none; color: #0366d6; } a:hover { text-decoration: underline; }</style>
           </head>
           <body>
-            <h1>Fireblocks NCW Documentation</h1>
-            <p>You are being redirected to the <a href="./android/">Android Documentation</a>.</p>
+            <h1>Fireblocks Documentation</h1>
+            <h2>Available Platforms</h2>
+            <ul>
+              <li><a href="./android/">Android</a></li>
+              </ul>
           </body>
           </html>
           EOF

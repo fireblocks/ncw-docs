@@ -1,9 +1,10 @@
-name: Deploy Documentation to GitHub Pages
+name: Deploy Versioned Documentation to GitHub Pages
 
 on:
   # Runs on pushes to the main branch
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -14,46 +15,118 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
-  cancel-in-progress: false
-  
+  cancel-in-progress: true
+
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Fetch all history so we can get last updated time if needed
+          fetch-depth: 0
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Read version numbers
+      - name: Discover all versions and generate index pages
         run: |
-          echo "ANDROID_EW_VERSION=$(cat android/ew/VERSION)" >> $GITHUB_ENV
-          echo "ANDROID_NCW_VERSION=$(cat android/ncw/VERSION)" >> $GITHUB_ENV
-
-      - name: Unzip and Stage Files
-        run: |
-          echo "Staging EW docs version ${{ env.ANDROID_EW_VERSION }}"
-          echo "Staging NCW docs version ${{ env.ANDROID_NCW_VERSION }}"
-
+          # Create the main directory for the built site
           mkdir -p docs/android/ew
           mkdir -p docs/android/ncw
 
-          unzip "android/ew/embedded_wallet-html-documentation-${{ env.ANDROID_EW_VERSION }}.zip" -d docs/android/ew
-          unzip "android/ncw/ncw-html-documentation-${{ env.ANDROID_NCW_VERSION }}.zip" -d docs/android/ncw
+          # --- Generate Root Index Page ---
+          cat > docs/index.html <<-EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Fireblocks NCW Documentation</title>
+            <meta http-equiv="refresh" content="0; url=./android/" />
+            <style>body { font-family: sans-serif; padding: 2em; } a { font-size: 1.2em; }</style>
+          </head>
+          <body>
+            <h1>Fireblocks NCW Documentation</h1>
+            <p>You are being redirected to the <a href="./android/">Android Documentation</a>.</p>
+          </body>
+          </html>
+          EOF
+
+          # --- Process NCW Versions ---
+          echo "Processing NCW versions..."
+          # Find all zip files, extract version numbers, and sort them
+          NCW_VERSIONS=$(ls -1 android/ncw/*.zip | sed -n 's/.*-\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.zip/\1/p' | sort -V)
+          LATEST_NCW_VERSION=$(echo "$NCW_VERSIONS" | tail -n 1)
+          echo "Latest NCW version: $LATEST_NCW_VERSION"
+          NCW_LINKS=""
+          for version in $NCW_VERSIONS; do
+            echo "Staging NCW docs version $version"
+            mkdir -p "docs/android/ncw/$version"
+            unzip -q "android/ncw/ncw-html-documentation-$version.zip" -d "docs/android/ncw/$version"
+            NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$NCW_LINKS" # Prepend to keep descending order
+          done
+
+          # --- Process EW Versions ---
+          echo "Processing EW versions..."
+          # Find all zip files, extract version numbers, and sort them
+          EW_VERSIONS=$(ls -1 android/ew/*.zip | sed -n 's/.*-\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.zip/\1/p' | sort -V)
+          LATEST_EW_VERSION=$(echo "$EW_VERSIONS" | tail -n 1)
+          echo "Latest EW version: $LATEST_EW_VERSION"
+          EW_LINKS=""
+          for version in $EW_VERSIONS; do
+            echo "Staging EW docs version $version"
+            mkdir -p "docs/android/ew/$version"
+            unzip -q "android/ew/embedded_wallet-html-documentation-$version.zip" -d "docs/android/ew/$version"
+            EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$EW_LINKS" # Prepend to keep descending order
+          done
+
+          # --- Create "latest" redirects ---
+          cat > docs/android/ncw/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_NCW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_NCW_VERSION/">$LATEST_NCW_VERSION</a>.</p></body></html>
+          EOF
+          cat > docs/android/ew/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_EW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_EW_VERSION/">$LATEST_EW_VERSION</a>.</p></body></html>
+          EOF
+
+          # --- Generate Android Index Page ---
+          cat > docs/android/index.html <<-EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Android Documentation</title>
+            <style>body { font-family: sans-serif; padding: 2em; } h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2em; } ul { list-style-type: none; padding-left: 0; } li { margin-bottom: 0.5em; } a { text-decoration: none; color: #0366d6; } a:hover { text-decoration: underline; }</style>
+          </head>
+          <body>
+            <h1>Android Documentation</h1>
+            
+            <h2>Latest Versions</h2>
+            <ul>
+              <li><a href="./ncw/">NCW Docs (Version $LATEST_NCW_VERSION)</a></li>
+              <li><a href="./ew/">Embedded Wallet Docs (Version $LATEST_EW_VERSION)</a></li>
+            </ul>
+
+            <h2>All NCW Versions</h2>
+            <ul>
+              $NCW_LINKS
+            </ul>
+
+            <h2>All EW Versions</h2>
+            <ul>
+              $EW_LINKS
+            </ul>
+          </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -64,5 +137,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-

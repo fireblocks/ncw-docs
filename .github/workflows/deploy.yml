@@ -41,6 +41,8 @@ jobs:
           mkdir -p docs/android/ncw
           mkdir -p docs/ios/ew
           mkdir -p docs/ios/ncw
+          mkdir -p docs/downloads/ios/ew
+          mkdir -p docs/downloads/ios/ncw
 
           # --- Generate Root Index Page ---
           # This page now lists available platforms instead of redirecting.
@@ -105,17 +107,28 @@ jobs:
           LATEST_IOS_NCW_VERSION=$(echo "$IOS_NCW_VERSIONS" | tail -n 1)
           echo "Latest iOS NCW version: $LATEST_IOS_NCW_VERSION"
           IOS_NCW_LINKS=""
+          IOS_NCW_DOWNLOAD_LINKS=""
           for version in $IOS_NCW_VERSIONS; do
             echo "Staging iOS NCW docs version $version"
             mkdir -p "docs/ios/ncw/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
+            DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
+            
+            # Copy the doccarchive for download
+            cp -r "$DOCCARCHIVE_DIR" "docs/downloads/ios/ncw/"
+            
             # Copy the doccarchive and manually transform for subdirectory hosting
             cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ncw/$version/"
             # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
             find "docs/ios/ncw/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
             find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
             find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ncw/'$version'/"|g' {} \;
-            IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
+            # Fix absolute asset paths to be relative
+            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
+            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
+            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
+            IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version (Web)</a> | <a href='../downloads/ios/ncw/$DOCCARCHIVE_NAME'>Download .doccarchive</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
+            IOS_NCW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ncw/$DOCCARCHIVE_NAME'>NCW Documentation v$version (.doccarchive)</a></li>$IOS_NCW_DOWNLOAD_LINKS"
           done
 
           # --- Process iOS EW Versions ---
@@ -125,17 +138,28 @@ jobs:
           LATEST_IOS_EW_VERSION=$(echo "$IOS_EW_VERSIONS" | tail -n 1)
           echo "Latest iOS EW version: $LATEST_IOS_EW_VERSION"
           IOS_EW_LINKS=""
+          IOS_EW_DOWNLOAD_LINKS=""
           for version in $IOS_EW_VERSIONS; do
             echo "Staging iOS EW docs version $version"
             mkdir -p "docs/ios/ew/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
+            DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
+            
+            # Copy the doccarchive for download
+            cp -r "$DOCCARCHIVE_DIR" "docs/downloads/ios/ew/"
+            
             # Copy the doccarchive and manually transform for subdirectory hosting
             cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ew/$version/"
             # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
             find "docs/ios/ew/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
             find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
             find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ew/'$version'/"|g' {} \;
-            IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
+            # Fix absolute asset paths to be relative
+            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
+            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
+            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
+            IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version (Web)</a> | <a href='../downloads/ios/ew/$DOCCARCHIVE_NAME'>Download .doccarchive</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
+            IOS_EW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ew/$DOCCARCHIVE_NAME'>EW Documentation v$version (.doccarchive)</a></li>$IOS_EW_DOWNLOAD_LINKS"
           done
 
           # --- Create iOS "latest" redirects ---
@@ -152,10 +176,14 @@ jobs:
           <html>
           <head>
             <title>iOS Documentation</title>
-            <style>body { font-family: sans-serif; padding: 2em; } h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2em; } ul { list-style-type: none; padding-left: 0; } li { margin-bottom: 0.5em; } a { text-decoration: none; color: #0366d6; } a:hover { text-decoration: underline; }</style>
+            <style>body { font-family: sans-serif; padding: 2em; } h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2em; } ul { list-style-type: none; padding-left: 0; } li { margin-bottom: 0.5em; } a { text-decoration: none; color: #0366d6; } a:hover { text-decoration: underline; } .download-note { background: #f6f8fa; padding: 1em; border-radius: 6px; margin: 1em 0; } .download-note p { margin: 0; }</style>
           </head>
           <body>
             <h1>iOS Documentation</h1>
+            
+            <div class="download-note">
+              <p><strong>📱 Xcode Integration:</strong> Download .doccarchive files to open directly in Xcode for offline browsing and integration with your development workflow.</p>
+            </div>
             
             <h2>Latest Versions</h2>
             <ul>
@@ -171,6 +199,17 @@ jobs:
             <h2>All EW Versions</h2>
             <ul>
               $IOS_EW_LINKS
+            </ul>
+
+            <h2>Download for Xcode</h2>
+            <h3>NCW Documentation (.doccarchive)</h3>
+            <ul>
+              $IOS_NCW_DOWNLOAD_LINKS
+            </ul>
+            
+            <h3>Embedded Wallet Documentation (.doccarchive)</h3>
+            <ul>
+              $IOS_EW_DOWNLOAD_LINKS
             </ul>
           </body>
           </html>

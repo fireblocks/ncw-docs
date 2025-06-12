@@ -111,9 +111,10 @@ jobs:
             DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
             # Copy the doccarchive and manually transform for subdirectory hosting
             cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ncw/$version/"
-            # Fix BASE_PATH placeholders in all files for subdirectory hosting
-            find "docs/ios/ncw/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'|g' {} \;
-            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'|g' {} \;
+            # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
+            find "docs/ios/ncw/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
+            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'/|g' {} \;
+            find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ncw/'$version'/"|g' {} \;
             IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
           done
 
@@ -130,9 +131,10 @@ jobs:
             DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
             # Copy the doccarchive and manually transform for subdirectory hosting
             cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ew/$version/"
-            # Fix BASE_PATH placeholders in all files for subdirectory hosting
-            find "docs/ios/ew/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'|g' {} \;
-            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'|g' {} \;
+            # Fix BASE_PATH placeholders and hardcoded base URLs for subdirectory hosting
+            find "docs/ios/ew/$version" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
+            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'/|g' {} \;
+            find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|var baseUrl = "/"|var baseUrl = "/ncw-docs/ios/ew/'$version'/"|g' {} \;
             IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
           done
 

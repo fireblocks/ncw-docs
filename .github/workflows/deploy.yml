@@ -1,0 +1,68 @@
+name: Deploy Documentation to GitHub Pages
+
+on:
+  # Runs on pushes to the main branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+  
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Read version numbers
+        run: |
+          echo "ANDROID_EW_VERSION=$(cat android/ew/VERSION)" >> $GITHUB_ENV
+          echo "ANDROID_NCW_VERSION=$(cat android/ncw/VERSION)" >> $GITHUB_ENV
+
+      - name: Unzip and Stage Files
+        run: |
+          echo "Staging EW docs version ${{ env.ANDROID_EW_VERSION }}"
+          echo "Staging NCW docs version ${{ env.ANDROID_NCW_VERSION }}"
+
+          mkdir -p docs/android/ew
+          mkdir -p docs/android/ncw
+
+          unzip "android/ew/embedded_wallet-html-documentation-${{ env.ANDROID_EW_VERSION }}.zip" -d docs/android/ew
+          unzip "android/ncw/ncw-html-documentation-${{ env.ANDROID_NCW_VERSION }}.zip" -d docs/android/ncw
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+

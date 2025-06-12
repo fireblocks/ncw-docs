@@ -127,7 +127,7 @@ jobs:
             find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
             find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
             find "docs/ios/ncw/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
-            IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version (Web)</a> | <a href='../downloads/ios/ncw/$DOCCARCHIVE_NAME'>Download .doccarchive</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
+            # IOS_NCW_LINKS - removed web hosting links
             IOS_NCW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ncw/$DOCCARCHIVE_NAME'>NCW Documentation v$version (.doccarchive)</a></li>$IOS_NCW_DOWNLOAD_LINKS"
           done
 
@@ -158,7 +158,7 @@ jobs:
             find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|src="/js/|src="./js/|g' {} \;
             find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/css/|href="./css/|g' {} \;
             find "docs/ios/ew/$version" -name "*.html" -exec sed -i '' 's|href="/favicon|href="./favicon|g' {} \;
-            IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version (Web)</a> | <a href='../downloads/ios/ew/$DOCCARCHIVE_NAME'>Download .doccarchive</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
+            # IOS_EW_LINKS - removed web hosting links
             IOS_EW_DOWNLOAD_LINKS="<li><a href='../downloads/ios/ew/$DOCCARCHIVE_NAME'>EW Documentation v$version (.doccarchive)</a></li>$IOS_EW_DOWNLOAD_LINKS"
           done
 
@@ -184,22 +184,6 @@ jobs:
             <div class="download-note">
               <p><strong>📱 Xcode Integration:</strong> Download .doccarchive files to open directly in Xcode for offline browsing and integration with your development workflow.</p>
             </div>
-            
-            <h2>Latest Versions</h2>
-            <ul>
-              <li><a href="./ncw/">NCW Docs (Version $LATEST_IOS_NCW_VERSION)</a></li>
-              <li><a href="./ew/">Embedded Wallet Docs (Version $LATEST_IOS_EW_VERSION)</a></li>
-            </ul>
-
-            <h2>All NCW Versions</h2>
-            <ul>
-              $IOS_NCW_LINKS
-            </ul>
-
-            <h2>All EW Versions</h2>
-            <ul>
-              $IOS_EW_LINKS
-            </ul>
 
             <h2>Download for Xcode</h2>
             <h3>NCW Documentation (.doccarchive)</h3>

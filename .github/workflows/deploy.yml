@@ -109,7 +109,10 @@ jobs:
             echo "Staging iOS NCW docs version $version"
             mkdir -p "docs/ios/ncw/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
-            xcrun docc process-archive transform-for-static-hosting "$DOCCARCHIVE_DIR" --output-path "docs/ios/ncw/$version" --hosting-base-path "/ios/ncw/$version"
+            # Copy the doccarchive and manually transform for subdirectory hosting
+            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ncw/$version/"
+            # Fix BASE_PATH placeholders in JavaScript files for subdirectory hosting
+            find "docs/ios/ncw/$version/js" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ncw/'$version'|g' {} \;
             IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
           done
 
@@ -124,7 +127,10 @@ jobs:
             echo "Staging iOS EW docs version $version"
             mkdir -p "docs/ios/ew/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
-            xcrun docc process-archive transform-for-static-hosting "$DOCCARCHIVE_DIR" --output-path "docs/ios/ew/$version" --hosting-base-path "/ios/ew/$version"
+            # Copy the doccarchive and manually transform for subdirectory hosting
+            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ew/$version/"
+            # Fix BASE_PATH placeholders in JavaScript files for subdirectory hosting
+            find "docs/ios/ew/$version/js" -name "*.js" -exec sed -i '' 's|{{BASE_PATH}}|/ncw-docs/ios/ew/'$version'|g' {} \;
             IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
           done
 

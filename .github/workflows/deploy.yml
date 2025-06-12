@@ -101,14 +101,14 @@ jobs:
           # --- Process iOS NCW Versions ---
           echo "Processing iOS NCW versions..."
           # Find all .doccarchive directories, extract version numbers, and sort them
-          IOS_NCW_VERSIONS=$(ls -1d ios/ncw/*.doccarchive | sed -n 's/.*_\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
+          IOS_NCW_VERSIONS=$(ls -1d ios/ncw/*.doccarchive | sed -n 's/.*-\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
           LATEST_IOS_NCW_VERSION=$(echo "$IOS_NCW_VERSIONS" | tail -n 1)
           echo "Latest iOS NCW version: $LATEST_IOS_NCW_VERSION"
           IOS_NCW_LINKS=""
           for version in $IOS_NCW_VERSIONS; do
             echo "Staging iOS NCW docs version $version"
             mkdir -p "docs/ios/ncw/$version"
-            DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*_${version}.doccarchive)
+            DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
             xcrun docc process-archive transform-for-static-hosting "$DOCCARCHIVE_DIR" --output-path "docs/ios/ncw/$version" --hosting-base-path "/ios/ncw/$version"
             IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
           done
@@ -116,14 +116,14 @@ jobs:
           # --- Process iOS EW Versions ---
           echo "Processing iOS EW versions..."
           # Find all .doccarchive directories, extract version numbers, and sort them
-          IOS_EW_VERSIONS=$(ls -1d ios/ew/*.doccarchive | sed -n 's/.*_\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
+          IOS_EW_VERSIONS=$(ls -1d ios/ew/*.doccarchive | sed -n 's/.*-\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
           LATEST_IOS_EW_VERSION=$(echo "$IOS_EW_VERSIONS" | tail -n 1)
           echo "Latest iOS EW version: $LATEST_IOS_EW_VERSION"
           IOS_EW_LINKS=""
           for version in $IOS_EW_VERSIONS; do
             echo "Staging iOS EW docs version $version"
             mkdir -p "docs/ios/ew/$version"
-            DOCCARCHIVE_DIR=$(ls -1d ios/ew/*_${version}.doccarchive)
+            DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
             xcrun docc process-archive transform-for-static-hosting "$DOCCARCHIVE_DIR" --output-path "docs/ios/ew/$version" --hosting-base-path "/ios/ew/$version"
             IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
           done

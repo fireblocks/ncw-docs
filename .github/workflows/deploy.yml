@@ -39,6 +39,8 @@ jobs:
           # Create the main directory for the built site
           mkdir -p docs/android/ew
           mkdir -p docs/android/ncw
+          mkdir -p docs/ios/ew
+          mkdir -p docs/ios/ncw
 
           # --- Generate Root Index Page ---
           # This page now lists available platforms instead of redirecting.
@@ -54,6 +56,7 @@ jobs:
             <h2>Available Platforms</h2>
             <ul>
               <li><a href="./android/">Android</a></li>
+              <li><a href="./ios/">iOS</a></li>
               </ul>
           </body>
           </html>
@@ -93,6 +96,72 @@ jobs:
           EOF
           cat > docs/android/ew/index.html <<-EOF
           <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_EW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_EW_VERSION/">$LATEST_EW_VERSION</a>.</p></body></html>
+          EOF
+
+          # --- Process iOS NCW Versions ---
+          echo "Processing iOS NCW versions..."
+          # Find all .doccarchive directories, extract version numbers, and sort them
+          IOS_NCW_VERSIONS=$(ls -1d ios/ncw/*.doccarchive | sed -n 's/.*_\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.doccarchive/\1/p' | sort -V)
+          LATEST_IOS_NCW_VERSION=$(echo "$IOS_NCW_VERSIONS" | tail -n 1)
+          echo "Latest iOS NCW version: $LATEST_IOS_NCW_VERSION"
+          IOS_NCW_LINKS=""
+          for version in $IOS_NCW_VERSIONS; do
+            echo "Staging iOS NCW docs version $version"
+            mkdir -p "docs/ios/ncw/$version"
+            cp -r "ios/ncw/"*"_$version.doccarchive/"* "docs/ios/ncw/$version/"
+            IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
+          done
+
+          # --- Process iOS EW Versions ---
+          echo "Processing iOS EW versions..."
+          # Find all .doccarchive directories, extract version numbers, and sort them
+          IOS_EW_VERSIONS=$(ls -1d ios/ew/*.doccarchive | sed -n 's/.*_\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.doccarchive/\1/p' | sort -V)
+          LATEST_IOS_EW_VERSION=$(echo "$IOS_EW_VERSIONS" | tail -n 1)
+          echo "Latest iOS EW version: $LATEST_IOS_EW_VERSION"
+          IOS_EW_LINKS=""
+          for version in $IOS_EW_VERSIONS; do
+            echo "Staging iOS EW docs version $version"
+            mkdir -p "docs/ios/ew/$version"
+            cp -r "ios/ew/"*"_$version.doccarchive/"* "docs/ios/ew/$version/"
+            IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
+          done
+
+          # --- Create iOS "latest" redirects ---
+          cat > docs/ios/ncw/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_NCW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_NCW_VERSION/">$LATEST_IOS_NCW_VERSION</a>.</p></body></html>
+          EOF
+          cat > docs/ios/ew/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_EW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_EW_VERSION/">$LATEST_IOS_EW_VERSION</a>.</p></body></html>
+          EOF
+
+          # --- Generate iOS Index Page ---
+          cat > docs/ios/index.html <<-EOF
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>iOS Documentation</title>
+            <style>body { font-family: sans-serif; padding: 2em; } h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 2em; } ul { list-style-type: none; padding-left: 0; } li { margin-bottom: 0.5em; } a { text-decoration: none; color: #0366d6; } a:hover { text-decoration: underline; }</style>
+          </head>
+          <body>
+            <h1>iOS Documentation</h1>
+            
+            <h2>Latest Versions</h2>
+            <ul>
+              <li><a href="./ncw/">NCW Docs (Version $LATEST_IOS_NCW_VERSION)</a></li>
+              <li><a href="./ew/">Embedded Wallet Docs (Version $LATEST_IOS_EW_VERSION)</a></li>
+            </ul>
+
+            <h2>All NCW Versions</h2>
+            <ul>
+              $IOS_NCW_LINKS
+            </ul>
+
+            <h2>All EW Versions</h2>
+            <ul>
+              $IOS_EW_LINKS
+            </ul>
+          </body>
+          </html>
           EOF
 
           # --- Generate Android Index Page ---

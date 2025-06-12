@@ -108,7 +108,8 @@ jobs:
           for version in $IOS_NCW_VERSIONS; do
             echo "Staging iOS NCW docs version $version"
             mkdir -p "docs/ios/ncw/$version"
-            cp -r "ios/ncw/"*"_$version.doccarchive/"* "docs/ios/ncw/$version/"
+            DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*_${version}.doccarchive)
+            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ncw/$version/"
             IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
           done
 
@@ -122,7 +123,8 @@ jobs:
           for version in $IOS_EW_VERSIONS; do
             echo "Staging iOS EW docs version $version"
             mkdir -p "docs/ios/ew/$version"
-            cp -r "ios/ew/"*"_$version.doccarchive/"* "docs/ios/ew/$version/"
+            DOCCARCHIVE_DIR=$(ls -1d ios/ew/*_${version}.doccarchive)
+            cp -r "$DOCCARCHIVE_DIR/"* "docs/ios/ew/$version/"
             IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
           done
 

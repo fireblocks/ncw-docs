@@ -65,7 +65,7 @@ jobs:
           # --- Process NCW Versions ---
           echo "Processing NCW versions..."
           # Find all zip files, extract version numbers, and sort them
-          NCW_VERSIONS=$(ls -1 android/ncw/*.zip | sed -n 's/.*-\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.zip/\1/p' | sort -V)
+          NCW_VERSIONS=$(ls -1 android/ncw/*.zip | sed -n 's/.*-\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.zip/\1/p' | sort -V)
           LATEST_NCW_VERSION=$(echo "$NCW_VERSIONS" | tail -n 1)
           echo "Latest NCW version: $LATEST_NCW_VERSION"
           NCW_LINKS=""
@@ -79,7 +79,7 @@ jobs:
           # --- Process EW Versions ---
           echo "Processing EW versions..."
           # Find all zip files, extract version numbers, and sort them
-          EW_VERSIONS=$(ls -1 android/ew/*.zip | sed -n 's/.*-\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.zip/\1/p' | sort -V)
+          EW_VERSIONS=$(ls -1 android/ew/*.zip | sed -n 's/.*-\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.zip/\1/p' | sort -V)
           LATEST_EW_VERSION=$(echo "$EW_VERSIONS" | tail -n 1)
           echo "Latest EW version: $LATEST_EW_VERSION"
           EW_LINKS=""
@@ -101,7 +101,7 @@ jobs:
           # --- Process iOS NCW Versions ---
           echo "Processing iOS NCW versions..."
           # Find all .doccarchive directories, extract version numbers, and sort them
-          IOS_NCW_VERSIONS=$(ls -1d ios/ncw/*.doccarchive | sed -n 's/.*_\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.doccarchive/\1/p' | sort -V)
+          IOS_NCW_VERSIONS=$(ls -1d ios/ncw/*.doccarchive | sed -n 's/.*_\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
           LATEST_IOS_NCW_VERSION=$(echo "$IOS_NCW_VERSIONS" | tail -n 1)
           echo "Latest iOS NCW version: $LATEST_IOS_NCW_VERSION"
           IOS_NCW_LINKS=""
@@ -116,7 +116,7 @@ jobs:
           # --- Process iOS EW Versions ---
           echo "Processing iOS EW versions..."
           # Find all .doccarchive directories, extract version numbers, and sort them
-          IOS_EW_VERSIONS=$(ls -1d ios/ew/*.doccarchive | sed -n 's/.*_\([0-9]\+\.[0-9]\+\.[0-9]\+\)\.doccarchive/\1/p' | sort -V)
+          IOS_EW_VERSIONS=$(ls -1d ios/ew/*.doccarchive | sed -n 's/.*_\([0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\)\.doccarchive/\1/p' | sort -V)
           LATEST_IOS_EW_VERSION=$(echo "$IOS_EW_VERSIONS" | tail -n 1)
           echo "Latest iOS EW version: $LATEST_IOS_EW_VERSION"
           IOS_EW_LINKS=""

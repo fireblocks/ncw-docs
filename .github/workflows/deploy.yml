@@ -124,16 +124,18 @@ jobs:
               --hosting-base-path "ncw-docs/ios/ncw/$version"
             
             # Create redirect index.html
-            echo '<!DOCTYPE html>
+            cat > "docs/ios/ncw/$version/index.html" << 'EOL'
+<!DOCTYPE html>
 <html>
 <head>
-<title>Fireblocks NCW iOS Documentation v'$version'</title>
+<title>Fireblocks NCW iOS Documentation v${version}</title>
 <meta http-equiv="refresh" content="0; url=./documentation/fireblockssdk/" />
 </head>
 <body>
-<p>Redirecting to <a href="./documentation/fireblockssdk/">Fireblocks NCW iOS documentation v'$version'</a>...</p>
+<p>Redirecting to <a href="./documentation/fireblockssdk/">Fireblocks NCW iOS documentation v${version}</a>...</p>
 </body>
-</html>' > "docs/ios/ncw/$version/index.html"
+</html>
+EOL
             
             # Add .nojekyll file
             touch "docs/ios/ncw/$version/.nojekyll"
@@ -164,16 +166,18 @@ jobs:
               --hosting-base-path "ncw-docs/ios/ew/$version"
             
             # Create redirect index.html
-            echo '<!DOCTYPE html>
+            cat > "docs/ios/ew/$version/index.html" << 'EOL'
+<!DOCTYPE html>
 <html>
 <head>
-<title>Fireblocks Embedded Wallet iOS Documentation v'$version'</title>
+<title>Fireblocks Embedded Wallet iOS Documentation v${version}</title>
 <meta http-equiv="refresh" content="0; url=./documentation/embeddedwalletsdk/" />
 </head>
 <body>
-<p>Redirecting to <a href="./documentation/embeddedwalletsdk/">Fireblocks Embedded Wallet iOS documentation v'$version'</a>...</p>
+<p>Redirecting to <a href="./documentation/embeddedwalletsdk/">Fireblocks Embedded Wallet iOS documentation v${version}</a>...</p>
 </body>
-</html>' > "docs/ios/ew/$version/index.html"
+</html>
+EOL
             
             # Add .nojekyll file
             touch "docs/ios/ew/$version/.nojekyll"

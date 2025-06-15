@@ -125,17 +125,17 @@ jobs:
             
             # Create redirect index.html
             cat > "docs/ios/ncw/$version/index.html" <<-EOF
-<!DOCTYPE html>
-<html>
-<head>
-<title>Fireblocks NCW iOS Documentation v$version</title>
-<meta http-equiv="refresh" content="0; url=./documentation/fireblockssdk/" />
-</head>
-<body>
-<p>Redirecting to <a href="./documentation/fireblockssdk/">Fireblocks NCW iOS documentation v$version</a>...</p>
-</body>
-</html>
-EOF
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <title>Fireblocks NCW iOS Documentation v$version</title>
+            <meta http-equiv="refresh" content="0; url=./documentation/fireblockssdk/" />
+            </head>
+            <body>
+            <p>Redirecting to <a href="./documentation/fireblockssdk/">Fireblocks NCW iOS documentation v$version</a>...</p>
+            </body>
+            </html>
+            EOF
             
             # Add .nojekyll file
             touch "docs/ios/ncw/$version/.nojekyll"
@@ -167,17 +167,17 @@ EOF
             
             # Create redirect index.html
             cat > "docs/ios/ew/$version/index.html" <<-EOF
-<!DOCTYPE html>
-<html>
-<head>
-<title>Fireblocks Embedded Wallet iOS Documentation v$version</title>
-<meta http-equiv="refresh" content="0; url=./documentation/embeddedwalletsdk/" />
-</head>
-<body>
-<p>Redirecting to <a href="./documentation/embeddedwalletsdk/">Fireblocks Embedded Wallet iOS documentation v$version</a>...</p>
-</body>
-</html>
-EOF
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <title>Fireblocks Embedded Wallet iOS Documentation v$version</title>
+            <meta http-equiv="refresh" content="0; url=./documentation/embeddedwalletsdk/" />
+            </head>
+            <body>
+            <p>Redirecting to <a href="./documentation/embeddedwalletsdk/">Fireblocks Embedded Wallet iOS documentation v$version</a>...</p>
+            </body>
+            </html>
+            EOF
             
             # Add .nojekyll file
             touch "docs/ios/ew/$version/.nojekyll"

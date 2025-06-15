@@ -113,8 +113,34 @@ jobs:
           IOS_NCW_DOWNLOAD_LINKS=""
           for version in $IOS_NCW_VERSIONS; do
             echo "Processing iOS NCW docs version $version"
+            mkdir -p "docs/ios/ncw/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ncw/*-${version}.doccarchive)
             DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
+            
+            # Transform doccarchive for static hosting
+            xcrun docc process-archive transform-for-static-hosting \
+              "$DOCCARCHIVE_DIR" \
+              --output-path "docs/ios/ncw/$version" \
+              --hosting-base-path "ncw-docs/ios/ncw/$version"
+            
+            # Create redirect index.html
+            cat > "docs/ios/ncw/$version/index.html" <<-EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fireblocks NCW iOS Documentation v$version</title>
+<meta http-equiv="refresh" content="0; url=./documentation/fireblockssdk/" />
+</head>
+<body>
+<p>Redirecting to <a href="./documentation/fireblockssdk/">Fireblocks NCW iOS documentation v$version</a>...</p>
+</body>
+</html>
+EOF
+            
+            # Add .nojekyll file
+            touch "docs/ios/ncw/$version/.nojekyll"
+            
+            IOS_NCW_LINKS="<li><a href='./ncw/$version/'>Version $version</a></li>$IOS_NCW_LINKS" # Prepend to keep descending order
           done
           # Single download link for iOS NCW folder
           IOS_NCW_DOWNLOAD_LINKS="<li><a href='https://github.com/fireblocks/ncw-docs/tree/main/ios/ncw'>NCW Documentation (.doccarchive files)</a></li>"
@@ -129,12 +155,45 @@ jobs:
           IOS_EW_DOWNLOAD_LINKS=""
           for version in $IOS_EW_VERSIONS; do
             echo "Processing iOS EW docs version $version"
+            mkdir -p "docs/ios/ew/$version"
             DOCCARCHIVE_DIR=$(ls -1d ios/ew/*-${version}.doccarchive)
             DOCCARCHIVE_NAME=$(basename "$DOCCARCHIVE_DIR")
+            
+            # Transform doccarchive for static hosting
+            xcrun docc process-archive transform-for-static-hosting \
+              "$DOCCARCHIVE_DIR" \
+              --output-path "docs/ios/ew/$version" \
+              --hosting-base-path "ncw-docs/ios/ew/$version"
+            
+            # Create redirect index.html
+            cat > "docs/ios/ew/$version/index.html" <<-EOF
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fireblocks Embedded Wallet iOS Documentation v$version</title>
+<meta http-equiv="refresh" content="0; url=./documentation/embeddedwalletsdk/" />
+</head>
+<body>
+<p>Redirecting to <a href="./documentation/embeddedwalletsdk/">Fireblocks Embedded Wallet iOS documentation v$version</a>...</p>
+</body>
+</html>
+EOF
+            
+            # Add .nojekyll file
+            touch "docs/ios/ew/$version/.nojekyll"
+            
+            IOS_EW_LINKS="<li><a href='./ew/$version/'>Version $version</a></li>$IOS_EW_LINKS" # Prepend to keep descending order
           done
           # Single download link for iOS EW folder
           IOS_EW_DOWNLOAD_LINKS="<li><a href='https://github.com/fireblocks/ncw-docs/tree/main/ios/ew'>Embedded Wallet Documentation (.doccarchive files)</a></li>"
 
+          # --- Create iOS "latest" redirects ---
+          cat > docs/ios/ncw/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_NCW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_NCW_VERSION/">$LATEST_IOS_NCW_VERSION</a>.</p></body></html>
+          EOF
+          cat > docs/ios/ew/index.html <<-EOF
+          <!DOCTYPE html><html><head><title>Redirecting to latest</title><meta http-equiv="refresh" content="0; url=./$LATEST_IOS_EW_VERSION/" /></head><body><p>Redirecting to the latest version: <a href="./$LATEST_IOS_EW_VERSION/">$LATEST_IOS_EW_VERSION</a>.</p></body></html>
+          EOF
 
           # --- Generate iOS Index Page ---
           cat > docs/ios/index.html <<-EOF
@@ -148,8 +207,25 @@ jobs:
             <h1>iOS Documentation</h1>
             
             <div class="download-note">
-              <p><strong>📱 Xcode Integration:</strong> Download .doccarchive files to open directly in Xcode for offline browsing and integration with your development workflow.</p>
+              <p><strong>🌐 Web Documentation:</strong> Browse documentation online with full search and navigation features.</p>
+              <p><strong>📱 Xcode Integration:</strong> Download .doccarchive files to open directly in Xcode for offline browsing.</p>
             </div>
+            
+            <h2>Latest Versions</h2>
+            <ul>
+              <li><a href="./ncw/">NCW Docs (Version $LATEST_IOS_NCW_VERSION)</a></li>
+              <li><a href="./ew/">Embedded Wallet Docs (Version $LATEST_IOS_EW_VERSION)</a></li>
+            </ul>
+
+            <h2>All NCW Versions</h2>
+            <ul>
+              $IOS_NCW_LINKS
+            </ul>
+
+            <h2>All EW Versions</h2>
+            <ul>
+              $IOS_EW_LINKS
+            </ul>
 
             <h2>Download for Xcode</h2>
             <h3>NCW Documentation (.doccarchive)</h3>
